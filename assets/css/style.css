@@ -659,3 +659,13 @@ body.show-ph .ph-note{display:block}
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
 }
+
+/* ---- hosting badge clearance ----
+   The secondary review host injects a fixed badge at the viewport
+   bottom-right. It overlapped the .hero-credit MOOD COMP provenance
+   disclosure, hiding most of the compliance line. Lift the desktop caption
+   clear of it; mobile is left as designed (the caption is left-aligned
+   there). */
+@media (min-width:901px){
+  .hero-credit{bottom:58px}
+}
