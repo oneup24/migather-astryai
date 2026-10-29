@@ -94,7 +94,7 @@
 - `assets/img/season-02.jpg`
 - `assets/img/season-08.jpg`
 
-原始檔案仍在 `AstryValley_HKWebsite_Draft_20261027/site/assets/img/`，沒有刪。
+原始檔案仍在 `OUTDATED/AstryValley_HKWebsite_Draft_20261027/site/assets/img/`，沒有刪。
 
 ## 仍然待確認（網站上以「待定／待確認」顯示）
 
@@ -104,7 +104,7 @@
 - 香港營運主體 · 客服聯絡資料 · App 上架時間
 - 零售渠道合作狀態
 
-完整待確認清單見 `AstryValley_HKWebsite_Draft_20261027/PLACEHOLDER_REGISTER.md`。
+完整待確認清單見 `OUTDATED/AstryValley_HKWebsite_Draft_20261027/PLACEHOLDER_REGISTER.md`。
 
 ## 已知弱點
 
@@ -114,20 +114,31 @@
 3. 全部陪伴照片都是橫幅 3:2，與舊版直幅素材的構圖習慣不同，排版要重新調。
 4. 沒有真實的零售門市照片、沒有限定造型的實拍。
 
-## 上架到 Git
+## 線上位置
+
+**https://oneup24.github.io/migather-astryai/**
+
+Repo：`git@github.com:oneup24/migather-astryai.git` · branch `main` · GitHub Pages 由根目錄發佈（`.nojekyll` 已加）。
+
+## 再更新呢個網站
+
+本機工作副本：`AstryValley_HKWebsite_Prototype_20261029_repo/`
 
 ```bash
-cd AstryValley_HKWebsite_Prototype_20261029
-git init
-git add .
-git commit -m "暖星谷 HK 網站原型 — Version A + Version C 影像層"
-git branch -M main
-git remote add origin git@github.com:<你的帳號>/<repo>.git
-git push -u origin main
+cd AstryValley_HKWebsite_Prototype_20261029_repo
+# 改完檔案之後
+git add -A
+git commit -m "描述今次改咗咩"
+git push origin main
 ```
 
-GitHub Pages：**Settings → Pages → Source → Deploy from a branch → main / (root)**。
-（或把整個資料夾 push 到 `docs/` 分支，Source 選 `docs`。）
+GitHub Pages 會自動重新發佈，通常幾分鐘內。唔使再撳 Settings。
+
+由源碼重建呢個資料夾：
+
+```bash
+python3 OUTDATED/AstryValley_HKWebsite_Draft_20261027/build_prototype_vc.py
+```
 
 這是**原型**，不是正式網站：正式上線前要換掉 `assets/img/vc-*.jpg` 這些
 概念合成影像、補上商品頁數據、接 Shopify、移除所有 `data-ph` 待確認標記。
@@ -138,4 +149,4 @@ GitHub Pages：**Settings → Pages → Source → Deploy from a branch → main
 python3 build_prototype_vc.py
 ```
 
-（在 `AstryValley_HKWebsite_Draft_20261027/` 內執行。腳本每次都會重建整個資料夾。）
+（在 `OUTDATED/AstryValley_HKWebsite_Draft_20261027/` 內執行。腳本每次都會重建整個資料夾。）
