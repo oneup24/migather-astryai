@@ -98,7 +98,7 @@
     addBtn.addEventListener('click', function () {
       var qty = parseInt(($('#qty') && $('#qty').textContent) || '1', 10) || 1;
       var priceEl = $('.price');
-      var price = priceEl ? priceEl.textContent.trim() : 'HK$xxx';
+      var price = priceEl ? priceEl.textContent.trim() : 'HK$ 待定';
       var nameEl = $('.pdp-info .h1');
       var cart = getCart();
       var key = 'hoohoo';

@@ -43,7 +43,7 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:cal
 body{
   margin:0;background:var(--cream);color:var(--ink);
   font-family:var(--font);font-size:16px;line-height:1.7;
-  font-weight:500;letter-spacing:.01em;
+  font-weight:500;letter-spacing:.01em;text-wrap:pretty;
   -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
 img{max-width:100%;display:block}
@@ -83,7 +83,13 @@ ul{margin:0;padding:0;list-style:none}
 .h2{font-size:clamp(30px,4.6vw,54px)}
 .h3{font-size:clamp(21px,2.5vw,29px)}
 .h4{font-size:18px}
-.lede{font-size:clamp(16px,1.7vw,19px);line-height:1.78;color:var(--ink-2);max-width:56ch}
+.h1,.h2,.h3,.h4,.h5{text-wrap:balance}
+/* CJK orphans: Chrome's `pretty` barely rebalances zh-Hant, so balance the
+   short marketing paragraphs explicitly */
+.lede,.feature p,.step p,.retail-card p,.parent-item p,.pdp-block p,
+.safety-item p,.safety p,.faq-a p,.mood-band-sub,.mood-band-line,
+.world-card figcaption,.hero-lede,.support p,.app-band p,li{text-wrap:balance}
+.lede{font-size:clamp(16px,1.7vw,19px);line-height:1.78;color:var(--ink-2);max-width:62ch}
 .section--night .lede{color:#DCD3E6}
 .muted{color:var(--ink-2)}
 .small{font-size:13.5px;line-height:1.6}
@@ -138,6 +144,7 @@ ul{margin:0;padding:0;list-style:none}
 /* invert nav colours while it sits on the dark hero photo */
 .page-home .site-head:not(.is-stuck) .brand-cn{color:var(--cream)}
 .page-home .site-head:not(.is-stuck) .brand-en{color:var(--sun)}
+.page-home .site-head:not(.is-stuck) .brand-logo{filter:drop-shadow(0 2px 14px rgba(20,12,4,.55))}
 .page-home .site-head:not(.is-stuck) .nav-list a{color:rgba(251,246,232,.94);text-shadow:0 1px 12px rgba(20,12,4,.55)}
 .page-home .site-head:not(.is-stuck) .nav-list a:hover{background:rgba(251,246,232,.16)}
 .page-home .site-head:not(.is-stuck) .lang{background:rgba(255,252,244,.9)}
@@ -145,7 +152,10 @@ ul{margin:0;padding:0;list-style:none}
 .page-home .site-head:not(.is-stuck) .burger{background:rgba(255,252,244,.9)}
 .head-inner{display:flex;align-items:center;gap:20px;height:74px}
 .brand{display:flex;align-items:center;gap:11px;flex:none}
-.brand-mark{width:40px;height:40px;flex:none}
+.brand-logo{
+  width:150px;height:auto;display:block;flex:none;
+  filter:drop-shadow(0 1px 3px rgba(70,52,31,.30)) saturate(1.06);
+}
 .brand-txt{display:flex;flex-direction:column;line-height:1.05}
 .brand-cn{font-family:var(--font-d);font-weight:800;font-size:17px;letter-spacing:.04em}
 .brand-en{font-size:9.5px;font-weight:800;letter-spacing:.24em;color:var(--brown)}
@@ -291,7 +301,7 @@ ul{margin:0;padding:0;list-style:none}
 }
 .mood-band-sub{
   margin-top:18px;font-size:clamp(14px,1.1vw,16px);line-height:1.8;
-  color:rgba(251,246,232,.88);max-width:30em;
+  color:rgba(251,246,232,.88);max-width:46em;
 }
 
 /* ---------- manifesto ---------- */
@@ -300,7 +310,7 @@ ul{margin:0;padding:0;list-style:none}
 .manifesto-en{margin-top:14px;font-size:15px;font-weight:700;color:var(--brown);letter-spacing:.02em}
 
 /* ---------- section head ---------- */
-.sec-head{max-width:62ch;margin-bottom:clamp(30px,4vw,52px)}
+.sec-head{max-width:min(100%,880px);margin-bottom:clamp(30px,4vw,52px)}
 .sec-head.center{margin-inline:auto;text-align:center}
 .sec-head .h2{margin-top:14px}
 
@@ -418,12 +428,14 @@ ul{margin:0;padding:0;list-style:none}
 .foot h5{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);margin:0 0 16px}
 .foot li{margin-bottom:9px}
 .foot a:hover{color:var(--cream);text-decoration:underline;text-underline-offset:3px}
-.foot-brand{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+.foot-brand{display:flex;flex-direction:column;align-items:flex-start;gap:7px;margin-bottom:16px}
+.foot .brand-logo{width:168px;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))}
+.foot .brand-en{color:var(--sun)}
 .foot-bottom{
   margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,255,.13);
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:#9C92AE;
 }
-.compliance{margin-top:18px;font-size:12px;line-height:1.7;color:#9C92AE;max-width:60ch}
+.compliance{margin-top:18px;font-size:12px;line-height:1.7;color:#9C92AE;max-width:none}
 
 /* ---------- mood-reference badge ---------- */
 .mood{
@@ -631,12 +643,14 @@ body.show-ph .ph-note{display:block}
   }
   .hero-h1{font-size:clamp(40px,9.4vw,66px);margin-top:18px}
   .hero-lede{margin-top:20px;max-width:none;font-size:15px;line-height:1.8}
-  .hero-br{display:inline}
+  .hero-br{display:block}
   .hero-tag{display:none}
   .hero-scroll{display:none}
   .hero-credit{left:clamp(18px,4vw,44px);right:auto;bottom:18px;font-size:10px}
 }
 @media (max-width:680px){
+  .brand-logo{width:128px}
+  .foot-grid>div:first-child{grid-column:1/-1}
   .cmp-head span,.cmp-row span{padding:12px 10px;font-size:12.5px}
   .cmp-row span:first-child{font-size:12.5px}
   .feature-list{grid-template-columns:1fr}
