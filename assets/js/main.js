@@ -101,7 +101,7 @@
       var price = priceEl ? priceEl.textContent.trim() : 'HK$xxx';
       var nameEl = $('.pdp-info .h1');
       var cart = getCart();
-      var key = 'goodnight-sheep';
+      var key = 'hoohoo';
       var found = cart.filter(function (x) { return x.key === key; })[0];
       if (found) { found.qty += qty; }
       else {
